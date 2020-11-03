@@ -456,6 +456,10 @@
         "xgboost": {
           "description": "Spec for XGBoost predictor",
           "$ref": "#/definitions/v1alpha2.XGBoostSpec"
+        },
+        "lightgbm": {
+          "description": "Spec for LightGBM predictor",
+          "$ref": "#/definitions/v1alpha2.LightGBMSpec"
         }
       }
     },
@@ -607,6 +611,32 @@
       "properties": {
         "nthread": {
           "description": "Number of thread to be used by XGBoost",
+          "type": "integer",
+          "format": "int32"
+        },
+        "resources": {
+          "description": "Defaults to requests and limits of 1CPU, 2Gb MEM.",
+          "$ref": "#/definitions/v1.ResourceRequirements"
+        },
+        "runtimeVersion": {
+          "description": "Allowed runtime versions are specified in the inferenceservice config map",
+          "type": "string"
+        },
+        "storageUri": {
+          "description": "The location of the trained model",
+          "type": "string"
+        }
+      }
+    },
+    "v1alpha2.LightGBMSpec": {
+      "description": "LightGBMSpec defines arguments for configuring LightGBM model serving.",
+      "type": "object",
+      "required": [
+        "storageUri"
+      ],
+      "properties": {
+        "nthread": {
+          "description": "Number of thread to be used by LightGBM",
           "type": "integer",
           "format": "int32"
         },

@@ -20,8 +20,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+
 	"github.com/kubeflow/kfserving/pkg/constants"
-	"k8s.io/api/core/v1"
+	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/types"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -58,6 +59,7 @@ type PredictorsConfig struct {
 	Tensorflow PredictorConfig `json:"tensorflow,omitempty"`
 	Triton     PredictorConfig `json:"triton,omitempty"`
 	Xgboost    PredictorConfig `json:"xgboost,omitempty"`
+	LightGBM   PredictorConfig `json:"lightgbm,omitempty"`
 	SKlearn    PredictorConfig `json:"sklearn,omitempty"`
 	PyTorch    PredictorConfig `json:"pytorch,omitempty"`
 	ONNX       PredictorConfig `json:"onnx,omitempty"`
