@@ -1,17 +1,3 @@
-# Copyright 2020 kubeflow.org.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 # coding: utf-8
 
 """
@@ -32,6 +18,7 @@ import six
 
 from kfserving.models.v1alpha2_batcher import V1alpha2Batcher  # noqa: F401,E501
 from kfserving.models.v1alpha2_custom_spec import V1alpha2CustomSpec  # noqa: F401,E501
+from kfserving.models.v1alpha2_light_gbm_spec import V1alpha2LightGBMSpec  # noqa: F401,E501
 from kfserving.models.v1alpha2_logger import V1alpha2Logger  # noqa: F401,E501
 from kfserving.models.v1alpha2_onnx_spec import V1alpha2ONNXSpec  # noqa: F401,E501
 from kfserving.models.v1alpha2_py_torch_spec import V1alpha2PyTorchSpec  # noqa: F401,E501
@@ -57,6 +44,7 @@ class V1alpha2PredictorSpec(object):
     swagger_types = {
         'batcher': 'V1alpha2Batcher',
         'custom': 'V1alpha2CustomSpec',
+        'lightgbm': 'V1alpha2LightGBMSpec',
         'logger': 'V1alpha2Logger',
         'max_replicas': 'int',
         'min_replicas': 'int',
@@ -73,6 +61,7 @@ class V1alpha2PredictorSpec(object):
     attribute_map = {
         'batcher': 'batcher',
         'custom': 'custom',
+        'lightgbm': 'lightgbm',
         'logger': 'logger',
         'max_replicas': 'maxReplicas',
         'min_replicas': 'minReplicas',
@@ -86,12 +75,12 @@ class V1alpha2PredictorSpec(object):
         'xgboost': 'xgboost'
     }
 
-    def __init__(self, batcher=None, custom=None, logger=None, max_replicas=None, min_replicas=None, onnx=None,
-                 parallelism=None, pytorch=None, service_account_name=None, sklearn=None, tensorflow=None,
-                 tensorrt=None, triton=None, xgboost=None):  # noqa: E501
+    def __init__(self, batcher=None, custom=None, lightgbm=None, logger=None, max_replicas=None, min_replicas=None, onnx=None, parallelism=None, pytorch=None, service_account_name=None, sklearn=None, tensorflow=None, triton=None, xgboost=None):  # noqa: E501
         """V1alpha2PredictorSpec - a model defined in Swagger"""  # noqa: E501
+
         self._batcher = None
         self._custom = None
+        self._lightgbm = None
         self._logger = None
         self._max_replicas = None
         self._min_replicas = None
@@ -109,6 +98,8 @@ class V1alpha2PredictorSpec(object):
             self.batcher = batcher
         if custom is not None:
             self.custom = custom
+        if lightgbm is not None:
+            self.lightgbm = lightgbm
         if logger is not None:
             self.logger = logger
         if max_replicas is not None:
@@ -132,24 +123,27 @@ class V1alpha2PredictorSpec(object):
         if xgboost is not None:
             self.xgboost = xgboost
 
-    @ property
+    @property
     def batcher(self):
-        """
-        Gets the batcher of this V1alpha2PredictorSpec.  # noqa: E501
-        Activate batcher  # noqa: E501
+        """Gets the batcher of this V1alpha2PredictorSpec.  # noqa: E501
+
+        Activate request batching  # noqa: E501
+
         :return: The batcher of this V1alpha2PredictorSpec.  # noqa: E501
         :rtype: V1alpha2Batcher
         """
         return self._batcher
 
-    @ batcher.setter
+    @batcher.setter
     def batcher(self, batcher):
-        """
-        Sets the batcher of this V1alpha2PredictorSpec.
-        Activate batcher  # noqa: E501
+        """Sets the batcher of this V1alpha2PredictorSpec.
+
+        Activate request batching  # noqa: E501
+
         :param batcher: The batcher of this V1alpha2PredictorSpec.  # noqa: E501
         :type: V1alpha2Batcher
         """
+
         self._batcher = batcher
 
     @property
@@ -174,6 +168,29 @@ class V1alpha2PredictorSpec(object):
         """
 
         self._custom = custom
+
+    @property
+    def lightgbm(self):
+        """Gets the lightgbm of this V1alpha2PredictorSpec.  # noqa: E501
+
+        Spec for LightGBM predictor  # noqa: E501
+
+        :return: The lightgbm of this V1alpha2PredictorSpec.  # noqa: E501
+        :rtype: V1alpha2LightGBMSpec
+        """
+        return self._lightgbm
+
+    @lightgbm.setter
+    def lightgbm(self, lightgbm):
+        """Sets the lightgbm of this V1alpha2PredictorSpec.
+
+        Spec for LightGBM predictor  # noqa: E501
+
+        :param lightgbm: The lightgbm of this V1alpha2PredictorSpec.  # noqa: E501
+        :type: V1alpha2LightGBMSpec
+        """
+
+        self._lightgbm = lightgbm
 
     @property
     def logger(self):
@@ -225,7 +242,7 @@ class V1alpha2PredictorSpec(object):
     def min_replicas(self):
         """Gets the min_replicas of this V1alpha2PredictorSpec.  # noqa: E501
 
-        Minimum number of replicas, pods won't scale down to 0 in case of no traffic  # noqa: E501
+        Minimum number of replicas which defaults to 1, when minReplicas = 0 pods scale down to 0 in case of no traffic  # noqa: E501
 
         :return: The min_replicas of this V1alpha2PredictorSpec.  # noqa: E501
         :rtype: int
@@ -236,7 +253,7 @@ class V1alpha2PredictorSpec(object):
     def min_replicas(self, min_replicas):
         """Sets the min_replicas of this V1alpha2PredictorSpec.
 
-        Minimum number of replicas, pods won't scale down to 0 in case of no traffic  # noqa: E501
+        Minimum number of replicas which defaults to 1, when minReplicas = 0 pods scale down to 0 in case of no traffic  # noqa: E501
 
         :param min_replicas: The min_replicas of this V1alpha2PredictorSpec.  # noqa: E501
         :type: int
@@ -271,7 +288,7 @@ class V1alpha2PredictorSpec(object):
     def parallelism(self):
         """Gets the parallelism of this V1alpha2PredictorSpec.  # noqa: E501
 
-        Parallelism specifies how many requests can be processed concurrently, this sets the target concurrency for Autoscaling(KPA). For model servers that support tuning parallelism will use this value, by default the parallelism is the number of the CPU cores for most of the model servers.  # noqa: E501
+        Parallelism specifies how many requests can be processed concurrently, this sets the hard limit of the container concurrency(https://knative.dev/docs/serving/autoscaling/concurrency).  # noqa: E501
 
         :return: The parallelism of this V1alpha2PredictorSpec.  # noqa: E501
         :rtype: int
@@ -282,7 +299,7 @@ class V1alpha2PredictorSpec(object):
     def parallelism(self, parallelism):
         """Sets the parallelism of this V1alpha2PredictorSpec.
 
-        Parallelism specifies how many requests can be processed concurrently, this sets the target concurrency for Autoscaling(KPA). For model servers that support tuning parallelism will use this value, by default the parallelism is the number of the CPU cores for most of the model servers.  # noqa: E501
+        Parallelism specifies how many requests can be processed concurrently, this sets the hard limit of the container concurrency(https://knative.dev/docs/serving/autoscaling/concurrency).  # noqa: E501
 
         :param parallelism: The parallelism of this V1alpha2PredictorSpec.  # noqa: E501
         :type: int

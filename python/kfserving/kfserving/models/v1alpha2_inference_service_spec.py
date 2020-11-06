@@ -1,17 +1,3 @@
-# Copyright 2020 kubeflow.org.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 # coding: utf-8
 
 """
@@ -76,7 +62,7 @@ class V1alpha2InferenceServiceSpec(object):
     def canary(self):
         """Gets the canary of this V1alpha2InferenceServiceSpec.  # noqa: E501
 
-        Canary defines an alternate endpoints to route a percentage of traffic.  # noqa: E501
+        Canary defines alternate endpoints to route a percentage of traffic.  # noqa: E501
 
         :return: The canary of this V1alpha2InferenceServiceSpec.  # noqa: E501
         :rtype: V1alpha2EndpointSpec
@@ -87,7 +73,7 @@ class V1alpha2InferenceServiceSpec(object):
     def canary(self, canary):
         """Sets the canary of this V1alpha2InferenceServiceSpec.
 
-        Canary defines an alternate endpoints to route a percentage of traffic.  # noqa: E501
+        Canary defines alternate endpoints to route a percentage of traffic.  # noqa: E501
 
         :param canary: The canary of this V1alpha2InferenceServiceSpec.  # noqa: E501
         :type: V1alpha2EndpointSpec

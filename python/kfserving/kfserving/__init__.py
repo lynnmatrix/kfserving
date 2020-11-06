@@ -53,3 +53,4 @@ from .models.v1alpha2_status_configuration_spec import V1alpha2StatusConfigurati
 from .models.v1alpha2_triton_spec import V1alpha2TritonSpec
 from .models.v1alpha2_tensorflow_spec import V1alpha2TensorflowSpec
 from .models.v1alpha2_xg_boost_spec import V1alpha2XGBoostSpec
+from .models.v1alpha2_light_gbm_spec import V1alpha2LightGBMSpec

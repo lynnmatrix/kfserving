@@ -1,17 +1,3 @@
-# Copyright 2020 kubeflow.org.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 # coding: utf-8
 
 """
@@ -127,7 +113,7 @@ class V1alpha2XGBoostSpec(object):
     def runtime_version(self):
         """Gets the runtime_version of this V1alpha2XGBoostSpec.  # noqa: E501
 
-        Allowed runtime versions are specified in the inferenceservice config map  # noqa: E501
+        XGBoost KFServer docker image version which defaults to latest release  # noqa: E501
 
         :return: The runtime_version of this V1alpha2XGBoostSpec.  # noqa: E501
         :rtype: str
@@ -138,7 +124,7 @@ class V1alpha2XGBoostSpec(object):
     def runtime_version(self, runtime_version):
         """Sets the runtime_version of this V1alpha2XGBoostSpec.
 
-        Allowed runtime versions are specified in the inferenceservice config map  # noqa: E501
+        XGBoost KFServer docker image version which defaults to latest release  # noqa: E501
 
         :param runtime_version: The runtime_version of this V1alpha2XGBoostSpec.  # noqa: E501
         :type: str
@@ -150,7 +136,7 @@ class V1alpha2XGBoostSpec(object):
     def storage_uri(self):
         """Gets the storage_uri of this V1alpha2XGBoostSpec.  # noqa: E501
 
-        The location of the trained model  # noqa: E501
+        The URI of the trained model which contains model.bst  # noqa: E501
 
         :return: The storage_uri of this V1alpha2XGBoostSpec.  # noqa: E501
         :rtype: str
@@ -161,7 +147,7 @@ class V1alpha2XGBoostSpec(object):
     def storage_uri(self, storage_uri):
         """Sets the storage_uri of this V1alpha2XGBoostSpec.
 
-        The location of the trained model  # noqa: E501
+        The URI of the trained model which contains model.bst  # noqa: E501
 
         :param storage_uri: The storage_uri of this V1alpha2XGBoostSpec.  # noqa: E501
         :type: str

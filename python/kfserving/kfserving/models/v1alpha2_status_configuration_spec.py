@@ -1,17 +1,3 @@
-# Copyright 2020 kubeflow.org.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 # coding: utf-8
 
 """
@@ -46,30 +32,25 @@ class V1alpha2StatusConfigurationSpec(object):
     """
     swagger_types = {
         'host': 'str',
-        'name': 'str',
-        'replicas': 'int'
+        'name': 'str'
     }
 
     attribute_map = {
         'host': 'host',
-        'name': 'name',
-        'replicas': 'replicas'
+        'name': 'name'
     }
 
-    def __init__(self, host=None, name=None, replicas=None):  # noqa: E501
+    def __init__(self, host=None, name=None):  # noqa: E501
         """V1alpha2StatusConfigurationSpec - a model defined in Swagger"""  # noqa: E501
 
         self._host = None
         self._name = None
-        self._replicas = None
         self.discriminator = None
 
         if host is not None:
             self.host = host
         if name is not None:
             self.name = name
-        if replicas is not None:
-            self.replicas = replicas
 
     @property
     def host(self):
@@ -116,27 +97,6 @@ class V1alpha2StatusConfigurationSpec(object):
         """
 
         self._name = name
-
-    @property
-    def replicas(self):
-        """Gets the replicas of this V1alpha2StatusConfigurationSpec.  # noqa: E501
-
-
-        :return: The replicas of this V1alpha2StatusConfigurationSpec.  # noqa: E501
-        :rtype: int
-        """
-        return self._replicas
-
-    @replicas.setter
-    def replicas(self, replicas):
-        """Sets the replicas of this V1alpha2StatusConfigurationSpec.
-
-
-        :param replicas: The replicas of this V1alpha2StatusConfigurationSpec.  # noqa: E501
-        :type: int
-        """
-
-        self._replicas = replicas
 
     def to_dict(self):
         """Returns the model properties as a dict"""
